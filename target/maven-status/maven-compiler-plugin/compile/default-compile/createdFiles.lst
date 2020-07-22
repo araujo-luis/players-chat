@@ -1,0 +1,6 @@
+com\luisaraujo\app\services\impl\PlayerServiceImpl.class
+com\luisaraujo\app\services\PlayerService.class
+com\luisaraujo\app\App.class
+com\luisaraujo\app\controllers\PlayerController.class
+com\luisaraujo\app\models\Player.class
+com\luisaraujo\app\models\Message.class
