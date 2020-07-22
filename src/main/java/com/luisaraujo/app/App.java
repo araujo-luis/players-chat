@@ -5,6 +5,8 @@ import com.luisaraujo.app.models.Player;
 import com.luisaraujo.app.exceptions.MessageLimitException;
 
 /**
+ * Main Class, initialize the app
+ * 
  * @author Luis Araujo
  *
  */
@@ -18,8 +20,8 @@ public class App {
 
 		ChatController chatController = new ChatController();
 
-		System.out.println(chatController.sendMessage(initiator, receiver, "First Message"));
-		System.out.println(chatController.sendMessage(initiator, receiver, "Second Message"));
-
+        for (int i = 0; i < 10; i++) {
+            System.out.println(chatController.sendMessage(initiator, receiver, "Message"));
+        }
 	}
 }

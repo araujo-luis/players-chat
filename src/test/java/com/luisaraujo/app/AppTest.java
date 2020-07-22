@@ -24,6 +24,8 @@ public class AppTest {
 	public final ExpectedException exception = ExpectedException.none();
 
 	/**
+	 * Test with one message
+	 * 
 	 * @throws MessageLimitException
 	 */
 	@Test
@@ -35,6 +37,8 @@ public class AppTest {
 	}
 
 	/**
+	 * Test with two sent messages 
+	 * 
 	 * @throws MessageLimitException
 	 */
 	@Test
@@ -48,6 +52,8 @@ public class AppTest {
 	}
 
 	/**
+	 * Test which retrieves Exception since has reached max messages allowed
+	 * 
 	 * @throws MessageLimitException
 	 */
 	@Test
