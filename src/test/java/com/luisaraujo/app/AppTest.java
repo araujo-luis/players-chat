@@ -9,9 +9,12 @@ import org.junit.Test;
  */
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
+    Player initiator = new Player("initiator");
+
+    Player receiver = new Player("receiver");
+
+    ChatController chatController = new ChatController();
+    
     @Test
     public void shouldAnswerWithTrue()
     {
