@@ -5,6 +5,7 @@ import java.util.HashMap;
 import com.luisaraujo.app.models.Message;
 import com.luisaraujo.app.models.Player;
 import com.luisaraujo.app.services.ChatService;
+import com.luisaraujo.app.exceptions.MessageLimitException;
 
 public class ChatServiceImpl implements ChatService {
     
@@ -17,13 +18,13 @@ public class ChatServiceImpl implements ChatService {
         
     }
 
-    public String sendMessage(Player initiator, Player receiver, String message){
+    public String sendMessage(Player initiator, Player receiver, String message) throws MessageLimitException{
         this.message = new Message(initiator, receiver, message);
         HashMap<Player, Integer> playerSentMessages =  initiator.getSentMessages();
         Integer counter = handleCounter(playerSentMessages, receiver);
         
         if(counter == -1)
-            return MAX_MESSAGES_REACHED_NOTIFICATION;
+            throw new MessageLimitException(MAX_MESSAGES_REACHED_NOTIFICATION);
 
         counter++;
         initiator.setSentMessages(receiver, counter);

@@ -1,10 +1,13 @@
 package com.luisaraujo.app;
 
 import static org.junit.Assert.assertEquals;
+import org.junit.rules.ExpectedException;
 
 import com.luisaraujo.app.models.Player;
 import com.luisaraujo.app.controllers.ChatController;
+import com.luisaraujo.app.exceptions.MessageLimitException;
 import org.junit.Test;
+import org.junit.Rule;
 
 /**
  * Unit test for simple App.
@@ -16,18 +19,20 @@ public class AppTest
     Player receiver = new Player("receiver");
 
     ChatController chatController = new ChatController();
+
+    @Rule
+    public final ExpectedException exception = ExpectedException.none();
     
     @Test
-    public void shouldAnswerWithMessageAndCountOne()
-    {
+    public void shouldAnswerWithMessageAndCountOne() throws MessageLimitException {
+
         String response = chatController.sendMessage(initiator, receiver, "First Message");
 
         assertEquals("First Message | 1", response);
     }
 
     @Test
-    public void shouldAnswerWithMessageAndCountTwo()
-    {
+    public void shouldAnswerWithMessageAndCountTwo() throws MessageLimitException {
         String firstResponse = chatController.sendMessage(initiator, receiver, "First Message");
 
         String secondResponse = chatController.sendMessage(initiator, receiver, "Second Message");
@@ -37,8 +42,9 @@ public class AppTest
     }
 
     @Test
-    public void shouldAnswerWithMaxMessagesReached()
-    {
+    public void shouldThrowMessageLimitExceptionException() throws MessageLimitException {
+        exception.expect(MessageLimitException.class);
+        exception.expectMessage("You have reached the max messages allowed");
         chatController.sendMessage(initiator, receiver, "First Message");
         chatController.sendMessage(initiator, receiver, "Second Message");
         chatController.sendMessage(initiator, receiver, "Third Message");
@@ -49,8 +55,6 @@ public class AppTest
         chatController.sendMessage(initiator, receiver, "Eighth Message");
         chatController.sendMessage(initiator, receiver, "Ninth Message");
         chatController.sendMessage(initiator, receiver, "Tenth Message");
-        String finalResponse = chatController.sendMessage(initiator, receiver, "Eleventh Message");
-
-        assertEquals("You have reached the max messages allowed", finalResponse);
+        chatController.sendMessage(initiator, receiver, "Eleventh Message");
     }
 }
