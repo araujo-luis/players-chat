@@ -10,51 +10,60 @@ import org.junit.Test;
 import org.junit.Rule;
 
 /**
- * Unit test for simple App.
+ * @author Luis Araujo
+ *
  */
-public class AppTest 
-{
-    Player initiator = new Player("initiator");
+public class AppTest {
+	Player initiator = new Player("initiator");
 
-    Player receiver = new Player("receiver");
+	Player receiver = new Player("receiver");
 
-    ChatController chatController = new ChatController();
+	ChatController chatController = new ChatController();
 
-    @Rule
-    public final ExpectedException exception = ExpectedException.none();
-    
-    @Test
-    public void shouldAnswerWithMessageAndCountOne() throws MessageLimitException {
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
 
-        String response = chatController.sendMessage(initiator, receiver, "First Message");
+	/**
+	 * @throws MessageLimitException
+	 */
+	@Test
+	public void shouldAnswerWithMessageAndCountOne() throws MessageLimitException {
 
-        assertEquals("First Message | 1", response);
-    }
+		String response = chatController.sendMessage(initiator, receiver, "First Message");
 
-    @Test
-    public void shouldAnswerWithMessageAndCountTwo() throws MessageLimitException {
-        String firstResponse = chatController.sendMessage(initiator, receiver, "First Message");
+		assertEquals("First Message | 1", response);
+	}
 
-        String secondResponse = chatController.sendMessage(initiator, receiver, "Second Message");
+	/**
+	 * @throws MessageLimitException
+	 */
+	@Test
+	public void shouldAnswerWithMessageAndCountTwo() throws MessageLimitException {
+		String firstResponse = chatController.sendMessage(initiator, receiver, "First Message");
 
-        assertEquals("First Message | 1", firstResponse);
-        assertEquals("Second Message | 2", secondResponse);
-    }
+		String secondResponse = chatController.sendMessage(initiator, receiver, "Second Message");
 
-    @Test
-    public void shouldThrowMessageLimitExceptionException() throws MessageLimitException {
-        exception.expect(MessageLimitException.class);
-        exception.expectMessage("You have reached the max messages allowed");
-        chatController.sendMessage(initiator, receiver, "First Message");
-        chatController.sendMessage(initiator, receiver, "Second Message");
-        chatController.sendMessage(initiator, receiver, "Third Message");
-        chatController.sendMessage(initiator, receiver, "Fourth Message");
-        chatController.sendMessage(initiator, receiver, "Fifth Message");
-        chatController.sendMessage(initiator, receiver, "Sixth Message");
-        chatController.sendMessage(initiator, receiver, "Seventh Message");
-        chatController.sendMessage(initiator, receiver, "Eighth Message");
-        chatController.sendMessage(initiator, receiver, "Ninth Message");
-        chatController.sendMessage(initiator, receiver, "Tenth Message");
-        chatController.sendMessage(initiator, receiver, "Eleventh Message");
-    }
+		assertEquals("First Message | 1", firstResponse);
+		assertEquals("Second Message | 2", secondResponse);
+	}
+
+	/**
+	 * @throws MessageLimitException
+	 */
+	@Test
+	public void shouldThrowMessageLimitExceptionException() throws MessageLimitException {
+		exception.expect(MessageLimitException.class);
+		exception.expectMessage("You have reached the max messages allowed");
+		chatController.sendMessage(initiator, receiver, "First Message");
+		chatController.sendMessage(initiator, receiver, "Second Message");
+		chatController.sendMessage(initiator, receiver, "Third Message");
+		chatController.sendMessage(initiator, receiver, "Fourth Message");
+		chatController.sendMessage(initiator, receiver, "Fifth Message");
+		chatController.sendMessage(initiator, receiver, "Sixth Message");
+		chatController.sendMessage(initiator, receiver, "Seventh Message");
+		chatController.sendMessage(initiator, receiver, "Eighth Message");
+		chatController.sendMessage(initiator, receiver, "Ninth Message");
+		chatController.sendMessage(initiator, receiver, "Tenth Message");
+		chatController.sendMessage(initiator, receiver, "Eleventh Message");
+	}
 }

@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.luisaraujo.app.controllers","c":"ChatController","l":"ChatController()","url":"%3Cinit%3E()"},{"p":"com.luisaraujo.app.controllers","c":"ChatController","l":"sendMessage(Player, Player, String)","url":"sendMessage(com.luisaraujo.app.models.Player,com.luisaraujo.app.models.Player,java.lang.String)"}]

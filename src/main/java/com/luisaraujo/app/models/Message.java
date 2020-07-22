@@ -1,28 +1,32 @@
 package com.luisaraujo.app.models;
 
+/**
+ * @author Luis Araujo
+ *
+ */
 public class Message {
-    private String message;
+	private String message;
 
-    private Player iniciator;
+	private Player iniciator;
 
-    private Player receiver;
+	private Player receiver;
 
-    public String getMessage(){
-        return message;
-    }
+	public String getMessage() {
+		return message;
+	}
 
-    public Player getInitiatorPlayer(){
-        return iniciator;
-    }
+	public Player getInitiatorPlayer() {
+		return iniciator;
+	}
 
-    public Player getReceiverPlayer(){
-        return receiver;
-    }
+	public Player getReceiverPlayer() {
+		return receiver;
+	}
 
-    public Message(Player iniciator, Player receiver, String message){ 
-        this.message = message;
-        this.receiver = receiver;
-        this.iniciator = iniciator;
-    }
+	public Message(Player iniciator, Player receiver, String message) {
+		this.message = message;
+		this.receiver = receiver;
+		this.iniciator = iniciator;
+	}
 
 }
