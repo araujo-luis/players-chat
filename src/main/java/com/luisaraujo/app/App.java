@@ -1,7 +1,8 @@
 package com.luisaraujo.app;
 
+import javax.smartcardio.ResponseAPDU;
+
 import com.luisaraujo.app.controllers.ChatController;
-import com.luisaraujo.app.controllers.PlayerController;
 import com.luisaraujo.app.models.Player;
 
 /**
@@ -18,8 +19,8 @@ public class App {
 
         ChatController chatController = new ChatController();
 
-        chatController.sendMessage(initiator, receiver, "First Message");
+        System.out.println(chatController.sendMessage(initiator, receiver, "First Message"));
 
-        System.out.println( "Hello World!" );
+        System.out.println(chatController.sendMessage(initiator, receiver, "Second Message"));
     }
 }

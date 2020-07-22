@@ -14,7 +14,11 @@ public class ChatServiceImpl implements ChatService {
 
     public String sendMessage(Player initiator, Player receiver, String message){
         this.message = new Message(initiator, receiver, message);
-        return null;
+        Integer counter = initiator.getSentMessages().get(receiver) == null? 0: initiator.getSentMessages().get(receiver);
+        counter++;
+        initiator.setSentMessages(receiver, counter);
+        receiver.setReceivedMessages(initiator, counter);
+        return this.message.getMessage() + " | " + receiver.getReceivedMessage(initiator);
     }
 
     public String receiveMessage(Player initiator, String message){

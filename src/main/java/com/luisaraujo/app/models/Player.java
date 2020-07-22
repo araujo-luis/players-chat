@@ -24,16 +24,16 @@ public class Player {
         this.name = name;
     }
 
-    public void setReceivedMessages(HashMap<Player, Integer> receivedMessages) {
-        this.receivedMessages = receivedMessages;
+    public void setReceivedMessages(Player player, Integer counter) {
+        this.receivedMessages.put(player, counter);
     }
 
-    public HashMap<Player, Integer> getReceivedMessages() {
-        return this.receivedMessages;
+    public Integer getReceivedMessage(Player player) {
+        return this.receivedMessages.get(player);
     }
 
-    public void setSentMessages(HashMap<Player, Integer> sentMessages) {
-        this.sentMessages = sentMessages;
+    public void setSentMessages(Player player, Integer counter) {
+        this.sentMessages.put(player, counter);
     }
 
     public HashMap<Player, Integer> getSentMessages() {
