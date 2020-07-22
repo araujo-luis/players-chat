@@ -23,6 +23,5 @@ public class App {
 
         System.out.println(chatController.sendMessage(initiator, receiver, "Second Message"));
 
-        System.out.println(chatController.sendMessage(receiver, initiator, "First again Message"));
     }
 }
