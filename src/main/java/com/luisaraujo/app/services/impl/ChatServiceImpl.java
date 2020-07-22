@@ -7,6 +7,13 @@ import com.luisaraujo.app.models.Player;
 import com.luisaraujo.app.services.ChatService;
 import com.luisaraujo.app.exceptions.MessageLimitException;
 
+/**
+ * Chat Service methods Implementation
+ * 
+ * @author Luis Araujo
+ *
+ */
+
 public class ChatServiceImpl implements ChatService {
 
 	private Message message;
